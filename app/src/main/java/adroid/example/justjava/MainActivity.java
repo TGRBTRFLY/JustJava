@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
+        if (quantity > 0)
         quantity = quantity - 1;
         display(quantity);
     }
