@@ -10,13 +10,14 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    int quantity = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    int quantity = 0;
 
     /**
      * This method is called when the plus button is clicked.
@@ -36,21 +37,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * This method displays the given quantity value on the screen.
+     */
+    private void displayQuantity(int numberOfCups) {
+        TextView quantityTextView = (TextView) findViewById(
+                R.id.quantity_text_view);
+        quantityTextView.setText("" + numberOfCups);
+    }
+
+    /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
         int price = quantity * 5;
-        String priceMessage = "Total: $" + price + "\nThank You!";
-        displayMessage(priceMessage);
+        displayMessage(creatOrderSummary(price));
     }
 
-    /**
-     * This method displays the given quantity value on the screen.
-     */
-    private void displayQuantity(int number) {
-        TextView quantityTextView = (TextView) findViewById(
-                R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+    private String creatOrderSummary(int price) {
+        String orderSummary = "Name: --- " +
+                "\nQuantity: " + quantity +
+                "\nTotal: $" + price +
+                "\nThank You!";
+        return orderSummary;
     }
 
     /**
