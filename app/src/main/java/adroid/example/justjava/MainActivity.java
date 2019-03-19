@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given quantity value on the screen.
      */
     private void displayQuantity(int numberOfCups) {
-        TextView quantityTextView = (TextView) findViewById(
+        TextView quantityTextView = findViewById(
                 R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfCups);
     }
@@ -54,18 +54,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String creatOrderSummary(int price) {
-        String orderSummary = "Name: --- " +
+        String priceMessage = "Name: --- " +
                 "\nQuantity: " + quantity +
                 "\nTotal: $" + price +
                 "\nThank You!";
-        return orderSummary;
+        return priceMessage;
     }
 
     /**
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        TextView priceTextView = findViewById(R.id.price_text_view);
         priceTextView.setText(message);
     }
 
