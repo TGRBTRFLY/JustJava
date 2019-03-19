@@ -30,7 +30,6 @@
             android:id="@+id/whippedCream_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick=""
             android:text="Whipped Cream "
             android:textSize="16sp" />
 
@@ -97,7 +96,7 @@
             android:textAllCaps="true" />
 
         <TextView
-            android:id="@+id/price_text_view"
+            android:id="@+id/orderSummary_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

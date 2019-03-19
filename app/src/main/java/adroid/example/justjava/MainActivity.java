@@ -3,7 +3,9 @@ package adroid.example.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
+//import android.widget.CheckBox;
 
 /**
  * This app displays an order form to order coffee.
@@ -49,15 +51,34 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        //Does customer want whipped cream?
+        CheckBox whippedCreamCheckBox = findViewById(R.id.whippedCream_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+
+        //Figure out if the user wants chocolate topping
+        CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
+        boolean hasChocolate = chocolateCheckBox.isChecked();
+
+        //Figure out if the user wants cinnamon topping
+        CheckBox cinnamonCheckBox = findViewById(R.id.cinnamon_checkbox);
+        boolean hasCinnamon = cinnamonCheckBox.isChecked();
+
+        //Calculate the price
         int price = quantity * 5;
-        displayMessage(creatOrderSummary(price));
+
+        // Display the order summary on the screen
+        String message = createOrderSummary(price, hasWhippedCream, hasChocolate, hasCinnamon);
+        displayMessage(message);
     }
 
-    private String creatOrderSummary(int price) {
-        String priceMessage = "Name: --- " +
-                "\nQuantity: " + quantity +
-                "\nTotal: $" + price +
-                "\nThank You!";
+    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate, boolean addCinnamon) {
+        String priceMessage = "Name: ";
+        priceMessage += "\nAdd whipped cream? " + addWhippedCream;
+        priceMessage += "\nAdd chocolate? " + addChocolate;
+        priceMessage += "\nAdd cinnamon? " + addCinnamon;
+        priceMessage += "\nQuantity: " + quantity;
+        priceMessage += "\nTotal: $" + price;
+        priceMessage += "\nThank you!";
         return priceMessage;
     }
 
@@ -65,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = findViewById(R.id.orderSummary_message);
+        orderSummaryTextView.setText(message);
     }
 
 }
