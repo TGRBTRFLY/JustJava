@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
     int quantity = 0;
 
     /**
@@ -41,19 +40,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given quantity value on the screen.
+     * This method displays the given quantity value between the - and + buttons.
      */
     private void displayQuantity(int numberOfCups) {
-        TextView quantityTextView = findViewById(
-                R.id.quantity_text_view);
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfCups);
     }
 
     /**
-     * This method is called when the order button is clicked.
+     * This method is called when the ODER button is clicked.
      */
     public void submitOrder(View view) {
-        EditText nameField = findViewById(R.id.name_field);
+        EditText nameField = findViewById(R.id.name_field); //User entered name
         String name = nameField.getText().toString();
         Log.v("MainActivity", "Name: " + name);
 
@@ -82,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Create summary of the order.
      *
-     * @param name
-     * @param price
-     * @param addWhippedCream
-     * @param addChocolate
-     * @param addCinnamon
+     * @param name  user entered
+     * @param price  of order
+     * @param addWhippedCream  user selected
+     * @param addChocolate  user selected
+     * @param addCinnamon  user selected
      * @return text summary
      */
 
