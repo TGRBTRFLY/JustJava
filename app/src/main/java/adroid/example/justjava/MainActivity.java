@@ -87,10 +87,7 @@ public class MainActivity extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
-
-        displayMessage(priceMessage);
     }
-
 
     private int calculatePrice() {
         return quantity * 5;
@@ -99,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Create summary of the order.
      *
-     * @param name  user entered
-     * @param price  of order
-     * @param addWhippedCream  user selected
-     * @param addChocolate  user selected
-     * @param addCinnamon  user selected
+     * @param name            user entered
+     * @param price           of order
+     * @param addWhippedCream user selected
+     * @param addChocolate    user selected
+     * @param addCinnamon     user selected
      * @return text summary
      */
 
@@ -118,12 +115,5 @@ public class MainActivity extends AppCompatActivity {
         return priceMessage;
     }
 
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = findViewById(R.id.orderSummary_message);
-        orderSummaryTextView.setText(message);
-    }
 
 }
