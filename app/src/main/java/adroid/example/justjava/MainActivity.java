@@ -1,5 +1,7 @@
 package adroid.example.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    int quantity = 98;
+    int quantity = 0;
 
     /**
      * This method is called when the plus button is clicked.
@@ -73,11 +75,22 @@ public class MainActivity extends AppCompatActivity {
         CheckBox cinnamonCheckBox = findViewById(R.id.cinnamon_checkbox);
         boolean hasCinnamon = cinnamonCheckBox.isChecked();
 
-        //Calculate the price
+//Complete order summary
         int price = calculatePrice();
         String priceMessage = createOrderSummary(name, price, hasWhippedCream, hasChocolate, hasCinnamon);
+
+        // new Intent object                   constant
+        Intent intent = new Intent(Intent.ACTION_SENDTO); //constructor with 1 argument to initialize
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
+
         displayMessage(priceMessage);
     }
+
 
     private int calculatePrice() {
         return quantity * 5;
